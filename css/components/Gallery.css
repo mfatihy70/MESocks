@@ -1,0 +1,68 @@
+/* ============================================================
+   ME · Gallery — placeholder tile wall for the Instagram feed.
+   ============================================================ */
+
+.gallery {
+  position: relative;
+  padding: 110px 0;
+}
+
+.gallery__grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  margin-top: 30px;
+}
+
+.tile {
+  margin: 0;
+}
+
+.tile__inner {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  place-items: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.tile__inner .sock-art {
+  width: 58%;
+  transform: rotate(-6deg);
+}
+
+.tile:hover .tile__inner {
+  transform: translateY(-6px) rotate(-1.2deg);
+  box-shadow: var(--shadow);
+}
+
+.tile figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+/* cosy pastel tile backgrounds */
+.t1 { background: linear-gradient(165deg, #ffe9d6, #ffd3bd); }
+.t2 { background: linear-gradient(165deg, #e7f4ee, #cde9d8); }
+.t3 { background: linear-gradient(165deg, #e5f3ff, #c9e4f5); }
+.t4 { background: linear-gradient(165deg, #fdeff4, #f6d6e0); }
+.t5 { background: linear-gradient(165deg, #fff4d6, #ffe3a3); }
+.t6 { background: linear-gradient(165deg, #efecff, #d9d3f0); }
+
+.gallery__cta {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.gallery__note {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 0;
+}

@@ -1,0 +1,32 @@
+/* ============================================================
+   ME · Footer — one last friendly wave.
+   ============================================================ */
+
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 0 46px;
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+}
+
+.footer__brand {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--red);
+  margin-bottom: 4px;
+}
+
+.footer__note {
+  color: var(--ink);
+  font-size: 0.92rem;
+  margin-bottom: 8px;
+}
+
+.footer__fine {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  margin-bottom: 0;
+}

@@ -1,0 +1,82 @@
+/* ============================================================
+   ME · Hero — full-height landing view, cosy and centred.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 96svh;
+  display: grid;
+  align-items: center;
+  padding: 150px 0 90px;
+  text-align: center;
+}
+
+.hero__wrap h1 {
+  font-size: clamp(2.1rem, 5.2vw, 3.5rem);
+  margin-bottom: 18px;
+}
+
+.hero .kicker {
+  animation: hero-kicker 3.2s ease-in-out infinite alternate;
+  display: inline-flex;
+  align-items: center;
+}
+
+@keyframes hero-kicker {
+  from {
+    letter-spacing: 0.16em;
+  }
+  to {
+    letter-spacing: 0.22em;
+  }
+}
+
+.hero .lede {
+  margin-inline: auto;
+}
+
+.hero__cta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+/* the little parade of socks under the headline */
+.hero__peek {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 46px;
+}
+
+.hero__peek .sock {
+  width: 66px;
+  display: block;
+  transform-origin: 50% 4px;
+  animation: sock-sway 6s ease-in-out infinite alternate;
+}
+
+.hero__peek .sock:nth-child(2) {
+  width: 82px;
+  margin-top: -10px;
+  animation-delay: 0.7s;
+}
+
+.hero__peek .sock:nth-child(3) {
+  width: 74px;
+  animation-delay: 1.4s;
+}
+
+.hero__peek .sock:nth-child(4) {
+  animation-delay: 2.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .kicker,
+  .hero__peek .sock {
+    animation: none;
+  }
+}
