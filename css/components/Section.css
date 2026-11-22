@@ -11,7 +11,7 @@
 
 .section--paper {
   /* translucent so the background wheel ghosts through while scrolling */
-  background: rgba(255, 253, 246, 0.66);
+  background: rgba(253, 254, 255, 0.62);
   border-block: 1px solid var(--line);
 }
 
@@ -24,8 +24,10 @@
   margin-bottom: 20px;
 }
 
+/* the centred content column inside the wide wrap */
 .section__body {
   max-width: 720px;
+  margin-inline: auto;
 }
 
 /* ---------- story cards (used by the Wollzeile chapter) ---------- */
@@ -38,7 +40,7 @@
 }
 
 .story__card {
-  background: #fff9ec;
+  background: #f2f9ff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 24px;
@@ -49,8 +51,8 @@
   display: inline-block;
   font-family: var(--serif);
   font-weight: 700;
-  color: var(--red);
-  background: rgba(208, 91, 70, 0.1);
+  color: var(--accent-deep);
+  background: var(--accent-soft);
   padding: 2px 14px;
   border-radius: 999px;
   margin-bottom: 10px;

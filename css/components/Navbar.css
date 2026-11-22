@@ -1,5 +1,6 @@
 /* ============================================================
-   ME · Navbar — floating pill, fixed to the top of the viewport.
+   ME · Navbar — floating pill, fixed to the top of the viewport,
+   with the small shop logo on the left.
    ============================================================ */
 
 .navbar {
@@ -9,7 +10,7 @@
   transform: translateX(-50%);
   z-index: 50;
   width: min(1100px, calc(100% - 24px));
-  background: rgba(255, 253, 246, 0.88);
+  background: rgba(253, 254, 255, 0.88);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid var(--line);
@@ -19,7 +20,7 @@
 }
 
 .navbar--scrolled {
-  box-shadow: 0 14px 40px rgba(66, 59, 50, 0.16);
+  box-shadow: 0 14px 40px rgba(60, 75, 92, 0.18);
 }
 
 .navbar__inner {
@@ -27,30 +28,31 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 8px 10px 8px 18px;
+  padding: 7px 10px 7px 12px;
 }
 
 .navbar__brand {
   display: flex;
-  align-items: baseline;
-  gap: 9px;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.navbar__logo {
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: 0.04em;
-  color: var(--red);
+.navbar__logo-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(60, 75, 92, 0.25);
 }
 
 .navbar__tag {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-deep);
+  letter-spacing: 0.03em;
 }
 
 .navbar__links {
@@ -70,9 +72,9 @@
 
 .navbar__links a {
   display: inline-block;
-  padding: 8px 14px;
+  padding: 8px 13px;
   border-radius: 999px;
-  font-size: 0.88rem;
+  font-size: 0.87rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--ink);
@@ -81,12 +83,12 @@
 }
 
 .navbar__links a:hover {
-  background: rgba(208, 91, 70, 0.1);
-  color: var(--red-deep);
+  background: var(--accent-soft);
+  color: var(--accent-deep);
 }
 
 .navbar__links a.is-active {
-  background: var(--red);
+  background: var(--accent);
   color: #fff;
 }
 
@@ -95,7 +97,7 @@
     display: none;
   }
   .navbar__links a {
-    padding: 8px 11px;
-    font-size: 0.82rem;
+    padding: 8px 10px;
+    font-size: 0.8rem;
   }
 }

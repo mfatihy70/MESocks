@@ -1,12 +1,14 @@
 /**
  * Navbar — floating pill navigation. Links are plain anchors, so the
  * browser does the smooth scrolling (html { scroll-behavior: smooth }).
- * `wire()` adds the scroll-spy highlight and must be called after the
- * target sections exist in the DOM.
+ * Carries the small shop logo. `wire()` adds the scroll-spy highlight and
+ * must be called after the target sections exist in the DOM.
  *
  * @param {Array<{id: string, label: string}>} links
  */
 import { loadCss } from '../../lib/cssLoader.mjs';
+
+const LOGO_SRC = './assets/me_tabela.jpeg';
 
 export function Navbar(links = []) {
   loadCss('./css/components/Navbar.css');
@@ -17,7 +19,7 @@ export function Navbar(links = []) {
   nav.innerHTML =
     '<div class="navbar__inner">' +
     '<a class="navbar__brand" href="#home" aria-label="ME Socks and Souvenir, back to top">' +
-    '<span class="navbar__logo" aria-hidden="true">ME</span>' +
+    '<img class="navbar__logo-img" src="' + LOGO_SRC + '" alt="ME — socks and souvenir" width="34" height="34" />' +
     '<span class="navbar__tag">Socks &amp; Souvenir</span>' +
     '</a>' +
     '<ul class="navbar__links">' +

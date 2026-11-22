@@ -1,10 +1,17 @@
 /* ============================================================
-   ME · Gallery — placeholder tile wall for the Instagram feed.
+   ME · Gallery — wall of tiles for the Instagram feed.
    ============================================================ */
 
 .gallery {
   position: relative;
   padding: 110px 0;
+}
+
+.gallery .lede code {
+  background: var(--accent-soft);
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: 0.9em;
 }
 
 .gallery__grid {
@@ -19,18 +26,39 @@
 }
 
 .tile__inner {
+  position: relative;
   aspect-ratio: 4 / 5;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-soft);
   display: grid;
   place-items: center;
+  overflow: hidden;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .tile__inner .sock-art {
   width: 58%;
   transform: rotate(-6deg);
+}
+
+.tile__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tile__badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(253, 254, 255, 0.9);
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 0.85rem;
+  z-index: 1;
 }
 
 .tile:hover .tile__inner {
@@ -46,13 +74,13 @@
   color: var(--ink-soft);
 }
 
-/* cosy pastel tile backgrounds */
-.t1 { background: linear-gradient(165deg, #ffe9d6, #ffd3bd); }
-.t2 { background: linear-gradient(165deg, #e7f4ee, #cde9d8); }
-.t3 { background: linear-gradient(165deg, #e5f3ff, #c9e4f5); }
-.t4 { background: linear-gradient(165deg, #fdeff4, #f6d6e0); }
-.t5 { background: linear-gradient(165deg, #fff4d6, #ffe3a3); }
-.t6 { background: linear-gradient(165deg, #efecff, #d9d3f0); }
+/* soft blue-leaning pastel tile backgrounds */
+.t1 { background: linear-gradient(165deg, #dcecf8, #b7d7ef); }
+.t2 { background: linear-gradient(165deg, #e4f4ea, #c4e5cf); }
+.t3 { background: linear-gradient(165deg, #e5f1fb, #badcf2); }
+.t4 { background: linear-gradient(165deg, #f2e3c8, #e8c99a); }
+.t5 { background: linear-gradient(165deg, #d7e6f4, #a9c9e4); }
+.t6 { background: linear-gradient(165deg, #e89e87, #dc8b6d); color: #fff; }
 
 .gallery__cta {
   margin-top: 32px;

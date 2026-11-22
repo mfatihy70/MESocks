@@ -4,17 +4,26 @@
  * A faint fixed wheel that keeps slowly turning and gently parallax-rides
  * while you scroll. One rAF loop, transform-only, and it only runs while
  * the scroll position is still settling — cheap on purpose.
+ *
+ * Geometry note: the cabins sweep a circle of radius R + drop + height
+ * around the hub, so the viewBox is centred on the hub with enough margin
+ * in every direction (nothing gets clipped, the wheel stays centred).
  */
 import { loadCss } from '../../lib/cssLoader.mjs';
 
 const RISENRAD_PALETTE = [
-  '#d05b46', // red
-  '#e2b45a', // gold
-  '#7fae7a', // green
-  '#6b9ac4', // blue
-  '#d98c4a', // orange
-  '#a2765b', // camel
+  '#8fc1de', // light blue
+  '#39678c', // deep blue
+  '#cfe4f2', // mist
+  '#4d7ba3', // steel blue
+  '#6f9fc0', // dusty blue
+  '#e0a86b', // one warm cabin, like the golden hour on the Prater
 ];
+
+const CX = 90;
+const CY = 96;
+const R = 60;
+const N = 8;
 
 export function Riesenrad() {
   loadCss('./css/components/Riesenrad.css');
@@ -34,41 +43,39 @@ export function Riesenrad() {
 }
 
 function buildSvg() {
-  const cx = 80;
-  const cy = 78;
-  const R = 62;
-  const N = 8;
-
   let spokes = '';
   let cabins = '';
 
   for (let i = 0; i < N; i++) {
     const a = (i / N) * Math.PI * 2;
-    const x = (cx + Math.cos(a) * R).toFixed(1);
-    const y = (cy + Math.sin(a) * R).toFixed(1);
+    const x = (CX + Math.cos(a) * R).toFixed(1);
+    const y = (CY + Math.sin(a) * R).toFixed(1);
 
-    spokes += '<line x1="' + cx + '" y1="' + cy + '" x2="' + x + '" y2="' + y + '" class="rw-spoke"/>';
+    spokes += '<line x1="' + CX + '" y1="' + CY + '" x2="' + x + '" y2="' + y + '" class="rw-spoke"/>';
 
+    // Counter-rotating hangers keep each cabin vertical as the wheel turns.
     cabins +=
-      '<g>' +
-      '<line x1="' + x + '" y1="' + y + '" x2="' + x + '" y2="' + (Number(y) + 6) + '" class="rw-drop"/>' +
-      '<rect x="' + (Number(x) - 6.5) + '" y="' + (Number(y) + 6) +
-      '" width="13" height="15" rx="4.5" fill="' + RISENRAD_PALETTE[i % RISENRAD_PALETTE.length] + '" class="rw-cabin"/>' +
+      '<g transform="translate(' + x + ' ' + y + ')">' +
+      '<g class="rw-cabin-hanger">' +
+      '<line x1="0" y1="0" x2="0" y2="6" class="rw-drop"/>' +
+      '<rect x="-7" y="6" width="14" height="16" rx="5" fill="' +
+      RISENRAD_PALETTE[i % RISENRAD_PALETTE.length] + '" class="rw-cabin"/>' +
+      '</g>' +
       '</g>';
   }
 
   return (
-    '<svg viewBox="0 0 160 172" role="img" focusable="false">' +
+    '<svg viewBox="0 0 180 208" role="img" focusable="false">' +
     '<g class="riesenrad__frame">' +
-    '<path d="M80 78 L44 158" class="rw-leg"/>' +
-    '<path d="M80 78 L116 158" class="rw-leg"/>' +
-    '<rect x="34" y="154" width="92" height="7" rx="3.5" class="rw-base"/>' +
+    '<path d="M' + CX + ' ' + CY + ' L54 186" class="rw-leg"/>' +
+    '<path d="M' + CX + ' ' + CY + ' L126 186" class="rw-leg"/>' +
+    '<rect x="42" y="182" width="96" height="7" rx="3.5" class="rw-base"/>' +
     '</g>' +
     '<g class="riesenrad__wheel">' +
     spokes +
-    '<circle cx="80" cy="78" r="' + R + '" class="rw-rim"/>' +
+    '<circle cx="' + CX + '" cy="' + CY + '" r="' + R + '" class="rw-rim"/>' +
     cabins +
-    '<circle cx="80" cy="78" r="7" class="rw-hub"/>' +
+    '<circle cx="' + CX + '" cy="' + CY + '" r="7" class="rw-hub"/>' +
     '</g>' +
     '</svg>'
   );
@@ -76,7 +83,7 @@ function buildSvg() {
 
 /**
  * Gentle scroll parallax: the wheel drifts up a few pixels as you scroll
- * down, eased with a small lerp so it feels woolly rather than twitchy.
+ * down, eased with a small lerp so it feels soft rather than twitchy.
  */
 function attachParallax(lift) {
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -1,23 +1,25 @@
 /* ============================================================
    ME · Socks & Souvenir — global base styles
+   Theme: light, airy blue fades; warm sand tones only as accents.
    Component styles live in their own files in css/components/
    ============================================================ */
 
 :root {
-  --cream: #fdf6ea;
-  --paper: #fffdf6;
-  --ink: #423b32;
-  --ink-soft: #7a6f60;
-  --line: #eee2cc;
-  --sky-soft: #eaf5fb;
-  --red: #d05b46;
-  --red-deep: #b34432;
-  --brown: #8a6248;
-  --gold: #e2b45a;
-  --green: #7fae7a;
+  --paper: #fdfeff;
+  --cream: #eaf4fc;
+  --mist: #dcecf8;
+  --line: #d5e6f2;
+  --ink: #3c4b5c;
+  --ink-soft: #64798c;
+  --accent: #4d7ba3;
+  --accent-deep: #39678c;
+  --accent-soft: rgba(77, 123, 163, 0.12);
+  --sand: #e0a86b;
+  --sage: #7fae7a;
+  --coral: #dc8b6d;
 
-  --shadow: 0 12px 32px rgba(66, 59, 50, 0.12);
-  --shadow-soft: 0 6px 18px rgba(66, 59, 50, 0.08);
+  --shadow: 0 12px 32px rgba(60, 75, 92, 0.12);
+  --shadow-soft: 0 6px 18px rgba(60, 75, 92, 0.08);
   --radius: 20px;
 
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
@@ -39,12 +41,15 @@ body {
   margin: 0;
   font-family: var(--sans);
   color: var(--ink);
+  /* light blue fading down into a calm horizon */
   background: linear-gradient(
     180deg,
-    var(--sky-soft) 0%,
-    var(--cream) 360px,
-    var(--cream) 100%
+    #d9ecfa 0%,
+    #e6f2fc 260px,
+    var(--cream) 640px,
+    #eff8fe 100%
   );
+  background-attachment: fixed;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -64,7 +69,7 @@ p {
 }
 
 a {
-  color: var(--red-deep);
+  color: var(--accent-deep);
 }
 
 .wrap {
@@ -83,7 +88,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--accent-deep);
   margin: 0 0 10px;
 }
 
@@ -95,8 +100,8 @@ a {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  background: var(--cream);
-  border: 1px dashed var(--brown);
+  background: var(--paper);
+  border: 1px dashed var(--accent);
   border-radius: 999px;
   padding: 1px 8px;
   margin-left: 8px;
@@ -106,7 +111,7 @@ a {
 
 .btn {
   display: inline-block;
-  background: var(--red);
+  background: var(--accent);
   color: #fff;
   font-weight: 700;
   text-decoration: none;
@@ -117,19 +122,19 @@ a {
 }
 
 .btn:hover {
-  background: var(--red-deep);
+  background: var(--accent-deep);
   transform: translateY(-2px);
 }
 
 .btn--ghost {
   background: transparent;
-  color: var(--red-deep);
-  border: 2px solid var(--red);
+  color: var(--accent-deep);
+  border: 2px solid var(--accent);
   box-shadow: none;
 }
 
 .btn--ghost:hover {
-  background: rgba(208, 91, 70, 0.08);
+  background: var(--accent-soft);
 }
 
 .lede {
@@ -144,13 +149,13 @@ a {
   font-size: 1.32rem;
   font-style: italic;
   text-align: center;
-  color: var(--brown);
+  color: var(--accent-deep);
   max-width: 38ch;
   margin: 36px auto 0;
 }
 
 /* ---------- cards used inside section bodies ---------- */
-
+/* the amount of columns comes from the section: three or four a row */
 .cards {
   display: grid;
   gap: 18px;
@@ -158,27 +163,44 @@ a {
   margin-top: 26px;
 }
 
+.cards--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cards--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 720px) {
+  .cards--three,
+  .cards--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .card {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 22px;
+  padding: 20px;
   box-shadow: var(--shadow-soft);
 }
 
 .card h3 {
-  font-size: 1.12rem;
+  font-size: 1.08rem;
 }
 
 .card p {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 .card .card__emoji {
   display: block;
-  font-size: 1.7rem;
+  font-size: 1.65rem;
   margin-bottom: 8px;
 }
 

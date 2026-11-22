@@ -8,14 +8,14 @@
   text-align: center;
   padding: 60px 0 46px;
   border-top: 1px solid var(--line);
-  margin-top: 30px;
+  margin-top: 0;
 }
 
 .footer__brand {
   font-family: var(--serif);
   font-weight: 700;
   font-size: 1.25rem;
-  color: var(--red);
+  color: var(--accent-deep);
   margin-bottom: 4px;
 }
 

@@ -1,5 +1,6 @@
 /* ============================================================
-   ME · Contact — card with placeholder details & map deep-link.
+   ME · Contact — card with details, an embedded Google Maps pin
+   and a deep-link to the shop's Maps listing.
    ============================================================ */
 
 .contact-card {
@@ -60,9 +61,22 @@
 .contact__map {
   margin-top: 24px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
+  flex-direction: column;
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* embedded map with the shop pin */
+.contact__map-embed {
+  width: 100%;
+  height: 280px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+
+.contact__map .btn {
+  align-self: center;
 }
 
 .contact__hint {

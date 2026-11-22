@@ -30,10 +30,10 @@
   display: block;
 }
 
-/* The wheel itself keeps turning — one keyframe, no layout impact. */
+/* The wheel spins around its hub: 96px of the 208px viewBox height. */
 .riesenrad__wheel {
   transform-box: view-box;
-  transform-origin: 50% 45.3%;
+  transform-origin: 50% 46.15%;
   animation: rw-spin 90s linear infinite;
 }
 
@@ -45,38 +45,44 @@
 
 .rw-rim {
   fill: none;
-  stroke: #8a6248;
+  stroke: #4d7ba3;
   stroke-width: 5;
 }
 
 .rw-spoke {
-  stroke: #b78e6f;
+  stroke: #7ea4c4;
   stroke-width: 2.5;
   stroke-linecap: round;
 }
 
 .rw-leg {
-  stroke: #8a6248;
+  stroke: #4d7ba3;
   stroke-width: 6;
   stroke-linecap: round;
   fill: none;
 }
 
 .rw-base {
-  fill: #8a6248;
+  fill: #4d7ba3;
 }
 
 .rw-hub {
-  fill: #d05b46;
+  fill: #e0a86b;
 }
 
 .rw-drop {
-  stroke: #8a6248;
+  stroke: #7ea4c4;
   stroke-width: 2;
 }
 
+.rw-cabin-hanger {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: rw-spin 90s linear infinite reverse;
+}
+
 .rw-cabin {
-  stroke: rgba(66, 59, 50, 0.2);
+  stroke: rgba(60, 75, 92, 0.22);
   stroke-width: 1;
 }
 
@@ -142,6 +148,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .riesenrad__wheel,
+  .rw-cabin-hanger,
   .cloud {
     animation: none;
   }
