@@ -14,6 +14,7 @@ import { Contact } from './components/Contact.mjs';
 import { Reviews } from './components/Reviews.mjs';
 import { Footer } from './components/Footer.mjs';
 import { Riesenrad } from './components/Riesenrad.mjs';
+import { Snow } from './components/Snow.mjs';
 
 const NAV_LINKS = [
   { id: 'about', label: 'About' },
@@ -147,7 +148,8 @@ function mount() {
     Gallery(),
     Contact(),
     Reviews(),
-    Footer()
+    Footer(),
+    Snow()
   );
 
   // now the sections exist: activate the scroll-spy
