@@ -9,13 +9,449 @@
       content="ME is a cosy sock & souvenir shop in the Wollzeile, the little street behind Stephansdom in Vienna. 85% cotton socks with designs for every person and every pet."
     />
     <link rel="icon" type="image/jpeg" href="./assets/me_tabela.jpeg" />
-    <link rel="stylesheet" href="./css/base.css" />
-    <!-- Module scripts are deferred, so #app exists before app.mjs runs. -->
-    <script type="module" src="./js/app.mjs"></script>
+    <link rel="stylesheet" href="./main.css" />
+    <!-- All content below is plain HTML; main.js only fills decorative
+         elements (marked data-*) and drives the small animations. -->
+    <script src="./main.js" defer></script>
   </head>
   <body>
-    <!-- Every section below is mounted as a reusable ES-module component -->
-    <!-- (see js/components/). Components register their own CSS files.   -->
-    <main id="app"></main>
+    <main id="app">
+      <!-- · · · Background scenery: the turning Riesenrad + clouds · · · -->
+      <div class="riesenrad" aria-hidden="true">
+        <span class="cloud cloud--1"></span>
+        <span class="cloud cloud--2"></span>
+        <div class="riesenrad__lift" data-riesenrad></div>
+      </div>
+
+      <!-- · · · Navbar: plain anchors, smooth scrolling via CSS · · · -->
+      <nav class="navbar" aria-label="Main navigation">
+        <div class="navbar__inner">
+          <a
+            class="navbar__brand"
+            href="#home"
+            aria-label="ME Socks and Souvenir, back to top"
+          >
+            <img
+              class="navbar__logo-img"
+              src="./assets/me_tabela.jpeg"
+              alt="ME — socks and souvenir"
+              width="34"
+              height="34"
+            />
+            <span class="navbar__tag">Socks &amp; Souvenir</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="#about" data-spy="about">About</a></li>
+            <li><a href="#wollzeile" data-spy="wollzeile">Wollzeile</a></li>
+            <li><a href="#socks" data-spy="socks">The Socks</a></li>
+            <li><a href="#gallery" data-spy="gallery">Gallery</a></li>
+            <li><a href="#contact" data-spy="contact">Contact</a></li>
+            <li><a href="#reviews" data-spy="reviews">Reviews</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- · · · Hero: the landing view with the big shop logo · · ·
+           data-socks="count|seed-left|seed-right" hangs the sock rails. -->
+      <header class="hero" id="home" data-socks="2|1|3">
+        <div class="wrap hero__wrap">
+          <img
+            class="hero__logo reveal"
+            src="./assets/me_tabela.jpeg"
+            alt="ME sign: a ferris wheel with four hanging stockings"
+            width="240"
+            height="241"
+          />
+          <p class="kicker reveal">Wollzeile · Stephansdom · 1st District</p>
+          <h1 class="reveal">
+            Cosy socks from the little street behind Stephansdom.
+          </h1>
+          <p class="lede reveal">
+            ME is a tiny sock &amp; souvenir shop. Our socks are soft 85%
+            cotton, with wool options for real winter and wear designs for every
+            person, every pet and every Vienna heart.
+          </p>
+          <div class="hero__cta reveal">
+            <a class="btn" href="#contact">Come say hello</a>
+            <a class="btn btn--ghost" href="#socks">Peek the socks</a>
+          </div>
+          <!-- parade of swaying socks, drawn by main.js -->
+          <div
+            class="hero__peek reveal"
+            aria-hidden="true"
+            data-hero-socks
+          ></div>
+        </div>
+      </header>
+
+      <!-- · · · About us · · · -->
+      <section class="section section--paper" id="about" data-socks="3|2|3">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="kicker">About us</p>
+            <h2>A tiny shop with an oversized heart ♥️</h2>
+          </div>
+          <div class="section__body reveal">
+            <p class="lede">
+              ME is a small family shop in the Wollzeile, the quiet cobbled lane
+              that curves behind Stephansdom. Socks, sweet souvenirs, zero rush
+              - drop in for a pair or just for a chat.
+            </p>
+            <div class="cards cards--four">
+              <div class="card reveal">
+                <span class="card__emoji" aria-hidden="true">🧶</span>
+                <h3>Small shop, big parade</h3>
+                <p>
+                  Over a hundred designs rotate through our shelves from classic
+                  ribbed cotton to cheeky motifs you will not find in the big
+                  stores.
+                </p>
+              </div>
+              <div class="card reveal">
+                <span class="card__emoji" aria-hidden="true">🎡</span>
+                <h3>Vienna to take home</h3>
+                <p>
+                  Souvenir socks with Stephansdom, Riesenrad and coffeehouse
+                  prints, light enough for the suitcase, warm enough for the
+                  memory.
+                </p>
+              </div>
+              <div class="card reveal">
+                <span class="card__emoji" aria-hidden="true">🤝</span>
+                <h3>Cosy advice, genuine hello</h3>
+                <p>
+                  No queues, no rush, no upselling. Just a cosy little room,
+                  honest advice, and whoever is behind the counter will happily
+                  chat socks.
+                </p>
+              </div>
+              <div class="card reveal">
+                <span class="card__emoji" aria-hidden="true">🎁</span>
+                <h3>Little gifts, lovely memories</h3>
+                <p>
+                  From a tiny thank-you to a fun souvenir, every pair makes an
+                  easy gift and a cheerful reminder of a beautiful day in
+                  Vienna.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- · · · The Wollzeile story · · · -->
+      <section class="section section--cream" id="wollzeile" data-socks="3|4|5">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="kicker">The street we call home</p>
+            <h2>The Wollzeile story</h2>
+          </div>
+          <div class="section__body reveal">
+            <p class="lede">
+              One narrow street, two Vienna legends. The Wollzeile winds behind
+              Stephansdom like a woollen thread, and for over a century it has
+              been the address where the city stores its cosiness.
+            </p>
+            <div class="story">
+              <div class="story__card reveal">
+                <span class="story__year">1905</span>
+                <h3>Wollzeile - Where the schnitzel was born</h3>
+                <p>
+                  Johann Figlmüller opens a small wine tavern here. The
+                  schnitzel that made the street famous is born — a
+                  plate-overflowing legend that still draws a queue down the
+                  lane every single day.
+                </p>
+              </div>
+              <div class="story__card reveal">
+                <span class="story__year">Today</span>
+                <h3>Two doors of cosiness</h3>
+                <p>
+                  Follow the curve of the lane past the cathedral's shadow and
+                  the scent of schnitzel: a little smaller, a little woollier —
+                  ME keeps Vienna's feet warm, one pair at a time.
+                </p>
+              </div>
+            </div>
+            <p class="pull reveal">
+              "Between St. Stephen's towers and Figlmüller's pans, we keep
+              Vienna's feet warm."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- · · · The socks · · · -->
+      <section class="section section--paper" id="socks" data-socks="3|1|2">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="kicker">The socks</p>
+            <h2>85% cotton, wool when you want it, a design for everyone.</h2>
+          </div>
+          <div class="section__body reveal">
+            <p class="lede">
+              Most of our socks are 85% cotton — soft, breathable, and happy in
+              everyday shoes. For real winter days we keep wool options on the
+              shelf. Both wear designs for every person and every pet.
+            </p>
+            <div class="cards cards--four">
+              <div class="card reveal">
+                <span class="card__emoji" aria-hidden="true">🧦</span>
+                <h3>85% cotton</h3>
+                <p>
+                  Everyday softness that breathes, keeps its shape wash after
+                  wash, and never itches. The comfy 15% is stretch, so the socks
+                  stay up.
+                </p>
+              </div>
+              <div class="card reveal">
+                <span class="card__emoji" aria-hidden="true">🐑</span>
+                <h3>Wool options</h3>
+                <p>
+                  When the wind comes down the Wollzeile: merino and alpine wool
+                  blends that warm like a hug and still let your feet breathe.
+                </p>
+              </div>
+              <div class="card reveal">
+                <span class="card__emoji" aria-hidden="true">🎨</span>
+                <h3>For every person</h3>
+                <p>
+                  Stripes, dots, checks, hearts — Stephansdom, Riesenrad and
+                  coffeehouse motifs. From grandparents to teenagers, everyone
+                  grins.
+                </p>
+              </div>
+              <div class="card reveal">
+                <span class="card__emoji" aria-hidden="true">🐾</span>
+                <h3>And every pet</h3>
+                <p>
+                  Paw prints, dachshunds and city cats on your cuffs — souvenirs
+                  for the humans, tiny pairs for the four-legged Viennese.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- · · · Gallery: wall of Instagram tiles (drawn by main.js) · · · -->
+      <section class="gallery" id="gallery">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="kicker">Fresh off the timeline</p>
+            <h2>A little wall of our Instagram favourites</h2>
+            <p class="lede">
+              Right now these are placeholder tiles — Instagram keeps its photos
+              behind a login. The full parade of wool lives with us on
+              Instagram; add the photo links in <code>main.js</code> (the TILES
+              array) and they appear here.
+            </p>
+          </div>
+          <div class="gallery__grid" data-gallery></div>
+          <div class="gallery__cta reveal">
+            <a
+              class="btn"
+              href="https://www.instagram.com/mestore.at/"
+              target="_blank"
+              rel="noopener"
+              >Follow @mestore.at</a
+            >
+          </div>
+          <p class="gallery__note reveal">
+            Photos &amp; reels: instagram.com/mestore.at
+          </p>
+        </div>
+      </section>
+
+      <!-- · · · Contact: details, map embed · · · -->
+      <section class="section section--paper" id="contact" data-socks="3|5|6">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="kicker">Find us</p>
+            <h2>Two minutes from Stephansdom, next to the famous schnitzel.</h2>
+          </div>
+          <div class="section__body reveal">
+            <p class="lede">
+              Follow the Wollzeile around the corner from the cathedral, past
+              the queue for schnitzel — warm socks and a friendly hello are
+              waiting.
+            </p>
+            <div class="contact-card reveal">
+              <ul class="contact__list">
+                <li>
+                  <span class="contact__icon" aria-hidden="true">📍</span>
+                  <div>
+                    <small class="contact__label">Address</small>
+                    <div class="contact__value">Wollzeile, 1010 Wien</div>
+                    <small class="contact__note"
+                      >the little lane behind Stephansdom</small
+                    >
+                  </div>
+                </li>
+                <li>
+                  <span class="contact__icon" aria-hidden="true">☎</span>
+                  <div>
+                    <small class="contact__label">Phone</small>
+                    <div class="contact__value">
+                      <a href="tel:+4311234567">+43 1 123 45 67</a>
+                      <em class="chip">placeholder</em>
+                    </div>
+                    <small class="contact__note">we answer with socks on</small>
+                  </div>
+                </li>
+                <li>
+                  <span class="contact__icon" aria-hidden="true">📧</span>
+                  <div>
+                    <small class="contact__label">E-mail</small>
+                    <div class="contact__value">
+                      <a href="mailto:hello@mestore.at">hello@mestore.at</a>
+                      <em class="chip">placeholder</em>
+                    </div>
+                    <small class="contact__note"
+                      >hello is our favourite word</small
+                    >
+                  </div>
+                </li>
+                <li>
+                  <span class="contact__icon" aria-hidden="true">🕒</span>
+                  <div>
+                    <small class="contact__label">Hours</small>
+                    <div class="contact__value">
+                      Mon–Sat · 10:00–19:00
+                      <em class="chip">placeholder</em>
+                    </div>
+                    <small class="contact__note"
+                      >closed on Sundays, socks sleep in</small
+                    >
+                  </div>
+                </li>
+              </ul>
+              <div class="contact__map">
+                <iframe
+                  class="contact__map-embed"
+                  src="https://www.google.com/maps?q=48.2093966,16.3747986&amp;z=17&amp;hl=en&amp;output=embed"
+                  title="Map with the ME shop pin"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                ></iframe>
+                <a
+                  class="btn"
+                  href="https://maps.app.goo.gl/mGZ7d9idEZSRgZcF7"
+                  target="_blank"
+                  rel="noopener"
+                  >Open in Google Maps 🗺️</a
+                >
+              </div>
+            </div>
+            <p class="contact__hint">
+              Phone, e-mail and hours above are placeholders — swap in the real
+              ones right here once confirmed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- · · · Reviews: placeholder entries from Google Maps · · · -->
+      <section class="reviews" id="reviews">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="kicker">Kind words</p>
+            <h2>What visitors say on Google Maps</h2>
+          </div>
+          <div class="reviews__grid">
+            <article class="review reveal">
+              <div
+                class="review__stars"
+                role="img"
+                aria-label="5 out of 5 stars"
+              >
+                ★★★★★
+              </div>
+              <blockquote class="review__text">
+                The cutest little shop in the Wollzeile! Socks for everyone — I
+                got Riesenrad ones for me and paw-print ones for my sister's
+                dog. The team was lovely.
+              </blockquote>
+              <footer class="review__meta">
+                <span class="review__name">Anna K.</span>
+                <span class="review__date">a month ago</span>
+                <em class="chip">placeholder</em>
+                <span class="review__via">via Google Maps</span>
+              </footer>
+            </article>
+            <article class="review reveal">
+              <div
+                class="review__stars"
+                role="img"
+                aria-label="5 out of 5 stars"
+              >
+                ★★★★★
+              </div>
+              <blockquote class="review__text">
+                Perfect stop before the Figlmüller queue. Warm merino socks and
+                a friendly chat — Vienna in a nutshell.
+              </blockquote>
+              <footer class="review__meta">
+                <span class="review__name">Thomas R.</span>
+                <span class="review__date">2 months ago</span>
+                <em class="chip">placeholder</em>
+                <span class="review__via">via Google Maps</span>
+              </footer>
+            </article>
+            <article class="review reveal">
+              <div
+                class="review__stars"
+                role="img"
+                aria-label="4 out of 5 stars"
+              >
+                ★★★★☆
+              </div>
+              <blockquote class="review__text">
+                Tiny store, big selection of designs. Washed my cotton ones five
+                times now and they still look new.
+              </blockquote>
+              <footer class="review__meta">
+                <span class="review__name">Elena M.</span>
+                <span class="review__date">3 months ago</span>
+                <em class="chip">placeholder</em>
+                <span class="review__via">via Google Maps</span>
+              </footer>
+            </article>
+          </div>
+          <div class="reviews__divider reveal" aria-hidden="true">
+            <span class="reviews__divider-sock" data-sock="heart"></span>
+          </div>
+          <div class="reviews__cta reveal">
+            <a
+              class="btn btn--ghost"
+              href="https://maps.app.goo.gl/mGZ7d9idEZSRgZcF7"
+              target="_blank"
+              rel="noopener"
+              >Read all reviews on Google Maps</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- · · · Footer: one last friendly wave · · · -->
+      <footer class="footer">
+        <div class="wrap">
+          <p class="footer__brand">ME · Socks &amp; Souvenir</p>
+          <p class="footer__note">
+            Wollzeile · 1010 Wien - a small shop with warm feet and heart.
+          </p>
+          <p class="footer__fine">
+            Made with <span aria-hidden="true">❤️</span> and cotton ·
+            <a
+              href="https://www.instagram.com/mestore.at/"
+              target="_blank"
+              rel="noopener"
+              >@mestore.at</a
+            >
+          </p>
+        </div>
+      </footer>
+    </main>
   </body>
 </html>
