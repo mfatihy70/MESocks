@@ -4,45 +4,36 @@ A cosy single-page scroll website for a small sock & souvenir shop in the
 Wollzeile, the little street behind Stephansdom. 
 Just a warm advertisement page.
 
-Everything on the page is a **reusable ES-module component**, and every
-component owns **exactly one CSS file**.
+The page is deliberately simple: **all content lives as plain HTML** in
+`index.html`. One stylesheet, one script, no build step, no framework.
 
 ## Project structure
 
 ```
-index.html                     entry page (favicon, base.css + js/app.mjs)
+index.html        the whole page: navbar, hero, sections, gallery,
+                  contact, reviews and footer as readable HTML
+main.css          all styles (design tokens + one commented block per
+                  page section)
+main.js           decorative artwork generators (socks, ferris wheel,
+                  gallery tiles) and the small animations
 assets/
-  me_tabela.jpeg               the shop logo (navbar, hero, tab icon)
-css/
-  base.css                     global styles & design tokens
-  components/
-    Navbar.css Hero.css Section.css SockRail.css Gallery.css
-    Contact.css Reviews.css Footer.css Riesenrad.css
-lib/
-  cssLoader.mjs                components register their own CSS here
-  reveal.mjs                   IntersectionObserver scroll reveals
-  sockArt.mjs                  reusable inline sock SVG (motifs & lengths)
-js/
-  app.mjs                      mounts all sections, nav config & copy
-  components/
-    Navbar.mjs Hero.mjs Section.mjs SockRail.mjs Gallery.mjs
-    Contact.mjs Reviews.mjs Footer.mjs Riesenrad.mjs
+  me_logo.jpeg & me_tabela.jpeg    shop logo and photos
 ```
+
+`index.html` marks the decorative mount points with `data-*` attributes
+(`data-socks`, `data-hero-socks`, `data-gallery`, `data-riesenrad`,
+`data-sock`); `main.js` fills them on load. Without JavaScript the page
+still shows all of its content, just without the artwork and animations.
 
 ## Run it locally
 
-ES modules require `http://`, browsers block `file://`, so serve the
-folder once:
+Nothing to install — just open `index.html` in a browser, serve the
+folder with any static server, or host it as-is on GitHub Pages:
 
 ```bash
-# any of these, from this folder:
-python3 -m http.server 8000
-npx serve .
-
+python3 -m http.server 8000   # or: npx serve .
 # then open http://localhost:8000
 ```
-
-VS Code users can also use the "Live Server" extension.
 
 ## Features
 
@@ -63,13 +54,13 @@ VS Code users can also use the "Live Server" extension.
 
 All marked with a small "placeholder" chip on the page:
 
-- **Contact** (`js/components/Contact.mjs`): phone, e-mail and opening
-  hours. The map embed + button use the shop's Google Maps listing
-  (pin at 48.2093966, 16.3747986).
-- **Gallery** (`js/components/Gallery.mjs`): Instagram blocks server-side
-  image pulls, so tiles are sock artwork by default. Add an `img: '...'`
-  URL/path to any tile in the `TILES` array and the photo shows instead.
-- **Reviews** (`js/components/Reviews.mjs`): Google does not expose
-  review texts to automated fetching; copy the real reviews from the
-  shop's Google Maps listing into the `REVIEWS` array and remove the
-  `placeholder: true` flags.
+- **Contact**: in `index.html`, the phone, e-mail and opening hours in the
+  `#contact` section. The map embed + button use the shop's Google Maps
+  listing (pin at 48.2093966,16.3747986).
+- **Gallery**: in `main.js`, the `TILES` array. Instagram blocks
+  server-side image pulls, so tiles are sock artwork by default. Add an
+  `img: '...'` URL to any tile and the photo shows instead.
+- **Reviews**: in `index.html`, the `.review` cards in the `#reviews`
+  section. Google does not expose review texts to automated fetching;
+  copy the real reviews from the shop's Google Maps listing in and remove
+  the `placeholder` chips.
